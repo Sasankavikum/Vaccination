@@ -25,7 +25,7 @@
 					<div class="card-header">
 						<div class="row">
 							<div class="col-md-2">
-								<button type="button" id="btninsert" class="btn btn-primary">Add New Batch Detail</button>
+								<button type="button" id="btninsert" class="btn btn-primary">Add New Inventory</button>
 							</div>
 							<div class="col-md-2">
 							    <form action="${pageContext.request.contextPath}/VaccineDetails?action=PR" method="POST" target="_blank">
@@ -86,6 +86,10 @@
 												class="btndelete btn btn-danger btn-circle">
 												<i class="fas fa-trash"></i>
 											</button>
+											<button type="button"
+												class="btnprint btn btn-warning btn-circle">
+												<i class="fas fa-print"></i>
+											</button>
 										</td>
 									</tr>
 									<% } %>
@@ -115,16 +119,16 @@
 							<div class="row mt-2">
 								<div class="col-md-12">
 									<label for="name" class="form-label">Batch Number</label> <input
-										type="text" class="form-control text-uppercase" id="name"
+										type="text" class="form-control text-uppercase" id="batch_number"
 										required>
 								</div>
 							</div>
 							<div class="row mt-3">
 								<div class="col-md-12">
 									<label class="mr-sm-2" for="vaccineName">Vaccine Name</label> <br/>
-							      <select class="form-select mt-2" id="vaccineName">
+							      <select class="form-select mt-2" id="vaccine_name">
 							        <option value="D">Choose...</option>
-							        <option value="Pizer">Pfizer</option>
+							        <option value="Pfizer">Pfizer</option>
 							        <option value="Moderna">Moderna</option>
 							        <option value="Sputnik">Sputnik</option>
 							        <option value="AstraZeneca">AstraZeneca</option>
@@ -136,24 +140,24 @@
 							<div class="row mt-3">
 								<div class="col-md-6">
 									<label for="receive" class="form-label">Receive Date</label> <input
-										type="date" class="form-control text-uppercase" id="email"
+										type="date" class="form-control text-uppercase" id="receive_date"
 										required>
 								</div>
 								<div class="col-md-6">
 									<label for="email" class="form-label">Country From</label> <input
-										type="text" class="form-control text-uppercase" id="email"
+										type="text" class="form-control text-uppercase" id="country"
 										required>
 								</div>
 							</div>
 							<div class="row mt-3">
 								<div class="col-md-6">
 							      <label for="expire" class="form-label">Expire Date</label> <input
-										type="date" class="form-control text-uppercase" id="email"
+										type="date" class="form-control text-uppercase" id="expire_date"
 										required>
 								</div>
 								<div class="col-md-6">
 									<label for="batchNo" class="form-label">Quantity</label> <input
-										type="number" class="form-control text-uppercase" id="batchNo" maxlength="10"
+										type="number" class="form-control text-uppercase" id="quantity" maxlength="10"
 										required>
 								</div>
 							</div>							
@@ -212,7 +216,7 @@
 		    		}
 		    		
 		     	    $.ajax({
-		     	        url      : 'http://localhost:8282/RedCrossSupportService/VaccineDetails?action=NE',
+		     	        url      : 'http://localhost:8092/RedCrossSupportService/VaccineDetails?action=NE',
 		     	        method   : 'POST', 
 		     	        data     : objVaccine,
 		     	        success  : function(response){
@@ -236,7 +240,7 @@
 		    		}
 		    		
 		     	    $.ajax({
-		     	        url      : 'http://localhost:8282/RedCrossSupportService/VaccineDetails?action=UP',
+		     	        url      : 'http://localhost:8092/RedCrossSupportService/VaccineDetails?action=UP',
 		     	        method   : 'POST', 
 		     	        data     : objVaccine,
 		     	        success  : function(response){
@@ -253,7 +257,7 @@
 		    		}
 		    		
 		     	    $.ajax({
-		     	        url      : 'http://localhost:8282/RedCrossSupportService/VaccineDetails?action=DL',
+		     	        url      : 'http://localhost:8092/RedCrossSupportService/VaccineDetails?action=DL',
 		     	        method   : 'POST', 
 		     	        data     : objVaccine,
 		     	        success  : function(response){
@@ -279,7 +283,7 @@
 				$("#vaccineForm :input").prop("disabled", false);
 				
 		    	formState = "UP";
-		    	$('#btnAddAndUpdateModal').html('Update Batch Details');
+		    	$('#btnAddAndUpdateModal').html('Update Details');
 		    	$('#addAndUpdateModal').modal('toggle');
 		    });
 		    
