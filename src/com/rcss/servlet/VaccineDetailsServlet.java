@@ -1,13 +1,16 @@
 package com.rcss.servlet;
 
 import java.io.IOException;
+
+
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.xml.ws.WebEndpoint;
+//import javax.xml.ws.WebEndpoint;
 
 import com.rcss.model.VaccineDetails;
 import com.rcss.service.IVaccineDetailsService;
@@ -21,7 +24,7 @@ public class VaccineDetailsServlet extends HttpServlet {
         super();
     }
 
-    @WebEndpoint
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.sendRedirect("/RedCrossSupportService/VaccineDetails/index.jsp");
 	}

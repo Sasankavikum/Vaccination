@@ -1,43 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Querys>
 
-	<query id="insert_employeedetails">
-        <![CDATA[
-			insert into employee_details(empFullName, empNIC, empGender, empEmail, empAge, empAddress, empContactNo, empCategory)
-			values (?, ?, ?, ?, ?, ?, ?, ?)			
-        ]]>
-	</query>
-
-	<query id="all_employeedetails">
-         <![CDATA[        
-			select empId, empFullName, empNIC, empGender, empEmail, empAge, empAddress, empContactNo, empCategory
-			from employee_details
-        ]]>
-	</query>
-	
-	<query id="employeedetails_by_id">
-         <![CDATA[
-         	select empid, empFullName, empNIC, empGender, empEmail, empAge, empAddress, empContactNo, empCategory
-			from employee_details   
-			where empId = ?
-        ]]>
-	</query>
-
-	<query id="remove_employeedetails">
-         <![CDATA[        
-            delete from employee_details where empId = ?
-        ]]>
-	</query>
-	
-	<query id="update_employeedetails">
-         <![CDATA[        
-			update employee_details as g 
-			set g.empFullName = ?, g.empNIC = ?, g.empGender = ?, g.empEmail = ?,
-				g.empAge = ?, g.empAddress = ?, g.empContactNo = ?, g.empCategory = ?
-			where g.empId = ?
-        ]]>
-	</query>
-	
 		
 	<query id="insert_vaccinedetails">
         <![CDATA[
@@ -55,7 +18,7 @@
 	
 	<query id="vaccinedetails_by_id">
          <![CDATA[
-         	select vaccineNo, batch_number, vaccine_name, receive, country, expire, quantity
+         	select vaccineNo, batch_number, vaccine_name, receive_date, country, expire_date, quantity
 			from vaccine_details   
 			where vaccineNo = ?
         ]]>
@@ -70,8 +33,8 @@
 	<query id="update_vaccinedetails">
          <![CDATA[        
 			update vaccine_details as g 
-			set g.batch_number = ?, g.vaccine_name = ?, g.receive = ?, g.country = ?,
-				g.expire = ?, g.quantity = ? 
+			set g.batch_number = ?, g.vaccine_name = ?, g.receive_date = ?, g.country = ?,
+				g.expire_date = ?, g.quantity = ? 
 			where g.vaccineNo = ?
         ]]>
 	</query>
