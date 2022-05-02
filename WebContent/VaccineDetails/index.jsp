@@ -29,11 +29,11 @@
 							</div>
 							<div class="col-md-2">
 							    <form action="${pageContext.request.contextPath}/VaccineDetails?action=PR" method="POST" target="_blank">
-									<button type="submit" class="btn btn-block btn-warning float-right">Print Vaccine Report</button>
+									<button type="submit" class="btn btn-block btn-warning float-right">Print Stock Report</button>
 			                    </form>
 							</div>
 							<div class="col-md-5">
-								<h5 class="card-title mt-1 fw-bold d-flex justify-content-center">Stock</h5>
+								<h5 class="card-title mt-1 fw-bold d-flex justify-content-center">Inventory Details</h5>
 							</div>
 						</div>
 					</div>
@@ -43,10 +43,10 @@
 								<thead>
 									<tr>
 										<th>Vaccine No</th>
-										<th>Batch Number</th>
 										<th>Vaccine Name</th>
-										<th>Received Date</th>
-										<th>Country From</th>
+										<th>Batch Number</th>
+										<th>Receive Date</th>
+										<th>Receive Country</th>
 										<th>Expire Date</th>
 										<th>Quantity</th>
 										<th></th>
@@ -55,10 +55,10 @@
 								<tfoot>
 									<tr>
 										<th>Vaccine No</th>
-										<th>Batch Number</th>
 										<th>Vaccine Name</th>
-										<th>Received Date</th>
-										<th>Country From</th>
+										<th>Batch Number</th>
+										<th>Receive Date</th>
+										<th>Receive Country</th>
 										<th>Expire Date</th>
 										<th>Quantity</th>
 										<th></th>
@@ -70,13 +70,12 @@
 									%>
 									<tr>
 										<td class="emp text-uppercase"><%= vaccine.getVaccineNo() %></td>
-										<td class="text-uppercase"><%= vaccine.getBatch_number() %></td>
-										<td class="text-uppercase"><%= vaccine.getVaccine_name() %></td>
-										<td class="text-uppercase"><%= vaccine.getReceive_date() %></td>
-										<td class="text-uppercase"><%= vaccine.getCountry() %></td>
-										<td class="text-uppercase"><%= vaccine.getExpire_date() %></td>
+										<td class="text-uppercase"><%= vaccine.getVaccineName() %></td>
+										<td class="text-uppercase"><%= vaccine.getBatchNo() %></td>
+										<td class="text-uppercase"><%= vaccine.getVaccineReceive().split(" ")[0] %></td>
+										<td class="text-uppercase"><%= vaccine.getVaccineCountry() %></td>
+										<td class="text-uppercase"><%= vaccine.getVaccineExpire() %></td>
 										<td class="text-uppercase"><%= vaccine.getQuantity() %></td>
-
 										<td>
 											<button type="button"
 												class="btnupdate btn btn-success btn-circle">
@@ -85,10 +84,6 @@
 											<button type="button"
 												class="btndelete btn btn-danger btn-circle">
 												<i class="fas fa-trash"></i>
-											</button>
-											<button type="button"
-												class="btnprint btn btn-warning btn-circle">
-												<i class="fas fa-print"></i>
 											</button>
 										</td>
 									</tr>
@@ -116,52 +111,72 @@
 					<div class="container">
 						<form id="vaccineForm">
 							<input type="text" id="vaccineNo" hidden="true">
-							<div class="row mt-2">
+							<div class="row mt-3">
 								<div class="col-md-12">
 									<label for="name" class="form-label">Batch Number</label> <input
-										type="text" class="form-control text-uppercase" id="batch_number"
+										type="text" class="form-control text-uppercase" id="batchNumber"
 										required>
 								</div>
 							</div>
 							<div class="row mt-3">
 								<div class="col-md-12">
 									<label class="mr-sm-2" for="vaccineName">Vaccine Name</label> <br/>
-							      <select class="form-select mt-2" id="vaccine_name">
-							        <option value="D">Choose...</option>
-							        <option value="Pfizer">Pfizer</option>
-							        <option value="Moderna">Moderna</option>
-							        <option value="Sputnik">Sputnik</option>
-							        <option value="AstraZeneca">AstraZeneca</option>
-							        <option value="Sinopharm">Sinopharm</option>
-							        <option value="Sinovac">Sinovac</option>
-							      </select>
+							      		<select class="form-select mt-2" id="vaccineName">
+							        		<option value="D">Choose...</option>
+							        		<option value="Pfizer">Pfizer</option>
+							        		<option value="Moderna">Moderna</option>
+							        		<option value="Sputnik">Sputnik</option>
+							        		<option value="AstraZeneca">AstraZeneca</option>
+							        		<option value="Sinopharm">Sinopharm</option>
+							        		<option value="Sinovac">Sinovac</option>
+							      		</select>
 								</div>
 							</div>
-							<div class="row mt-3">
+							<div class="row mt-4">
 								<div class="col-md-6">
-									<label for="receive" class="form-label">Receive Date</label> <input
-										type="date" class="form-control text-uppercase" id="receive_date"
-										required>
+									<label for="vreceiveDate" class="form-label">Receive Date</label> 
+									<input type="date" class="form-control" id="receiveDate" required>
 								</div>
 								<div class="col-md-6">
-									<label for="email" class="form-label">Country From</label> <input
+									<label for="country" class="form-label">Country From</label> <input
 										type="text" class="form-control text-uppercase" id="country"
 										required>
 								</div>
 							</div>
 							<div class="row mt-3">
 								<div class="col-md-6">
-							      <label for="expire" class="form-label">Expire Date</label> <input
-										type="date" class="form-control text-uppercase" id="expire_date"
-										required>
+									<label for="expireDate" class="form-label">Expire Date</label> 
+									<input type="date" class="form-control" id="expireDate" required>
+									
 								</div>
 								<div class="col-md-6">
-									<label for="batchNo" class="form-label">Quantity</label> <input
-										type="number" class="form-control text-uppercase" id="quantity" maxlength="10"
+									<label for="quantity" class="form-label">Quantity</label> <input
+										type="number" class="form-control text-uppercase" id="quantity" 
 										required>
+										
+										<script>
+				var today = new Date();
+				var dd = today.getDate();
+				var mm = today.getMonth() + 1; //January is 0!
+				var yyyy = today.getFullYear();
+				if (dd < 10) {
+   					dd = '0' + dd;
+				}
+				if (mm < 10) {
+  	 				mm = '0' + mm;
+				} 
+    
+				today = yyyy + '-' + mm + '-' + dd;
+				document.getElementById("receiveDate").setAttribute("max", today);
+				document.getElementById("expireDate").setAttribute("min", today);
+				
+
+				
+			</script>
+										
 								</div>
-							</div>							
-					
+							</div>
+							
 							<div class="row mt-5 mb-2">
 								<div class="col-md-12 d-flex justify-content-center">
 									<button type="button" class="btn btn-success w-100"
@@ -181,23 +196,23 @@
     
 	    $(document).ready(function() {
 	    	var formState = "";
+	    	var formdata = [];
 	    	var table = $('#dataTable').DataTable();
 	    	
 		    $("#btninsert").click(function() {
 		    	formState = "NE";
 		    	
-		        $('#vaccineNo').val(""),
-		        $('#batch_number').val("");
-				$('#vaccine_name').val("D");
-				$('#receive_date').val("");
-				//$('#vaccinedDate').val("");
-		        $('#country').val(""),
-				$('#expire_date').val("");
+		        $('#vaccineNo').val("");
+				$('#vaccineName').val("");
+				$('#batchNumber').val("");
+				$('#receiveDate').val("");
+		        $('#country').val("");
+				$('#expireDate').val("");
 				$('#quantity').val("");
 		    	
 				$("#vaccineForm :input").prop("disabled", false);
 				
-		    	$('#btnAddAndUpdateModal').html('Add New Batch');
+		    	$('#btnAddAndUpdateModal').html('Add Inventory');
 		    	$('#addAndUpdateModal').modal('toggle');
 		    });
 		    
@@ -206,17 +221,16 @@
 		    		$("#loader").show();
 		    		var objVaccine = {
 		    				vaccineNo: $('#vaccineNo').val(),
-		    				batch_number: $('#batch_number').val(),
-		    				vaccine_name: $('#vaccine_name').val(),
-		    				//vaccinedDate: $('#vaccinedDate').val().split(" ")[0],
-		    				receive_date: $('#receive_date').val(),
+		    				vaccineName: $('#vaccineName').val(),
+		    				batchNumber: $('#batchNumber').val(),
+		    				receiveDate: $('#receiveDate').val(),
 		    				country: $('#country').val(),
-		    				expire_date: $('#expire_date').val(),
+		    				expireDate: $('#expireDate').val(),
 		    				quantity: $('#quantity').val(),
 		    		}
 		    		
 		     	    $.ajax({
-		     	        url      : 'http://localhost:8092/RedCrossSupportService/VaccineDetails?action=NE',
+		     	        url      : 'http://localhost:8095/RedCrossSupportService/VaccineDetails?action=NE',
 		     	        method   : 'POST', 
 		     	        data     : objVaccine,
 		     	        success  : function(response){
@@ -230,17 +244,20 @@
 		    		$("#loader").show();
 		    		var objVaccine = {
 		    				vaccineNo: $('#vaccineNo').val(),
-		    				batch_number: $('#batch_number').val(),
-		    				vaccine_name: $('#vaccine_name').val(),
-		    				//vaccinedDate: $('#vaccinedDate').val().split(" ")[0],
-		    				receive_date: $('#receive_date').val(),
+		    				vaccineName: $('#vaccineName').val(),
+		    				batchNumber: $('#batchNumber').val(),
+		    				receiveDate: $('#receiveDate').val(),
 		    				country: $('#country').val(),
-		    				expire_date: $('#expire_date').val(),
-		    				quantity: $('#quantity').val(),
+		    				expireDate: $('#expireDate').val(),
+		    				quantity: (formdata[6]==$('#quantity').val())?($('#quantity').val()):(formdata[6]-$('#quantity').val()),
 		    		}
-		    		
+		    		if(formdata[6]<$('#quantity').val()){
+		    			alert("Update Quantity Error");
+		    			location.reload();
+		    		}else{
+		    			
 		     	    $.ajax({
-		     	        url      : 'http://localhost:8092/RedCrossSupportService/VaccineDetails?action=UP',
+		     	        url      : 'http://localhost:8095/RedCrossSupportService/VaccineDetails?action=UP',
 		     	        method   : 'POST', 
 		     	        data     : objVaccine,
 		     	        success  : function(response){
@@ -248,7 +265,7 @@
 		     	        	location.reload();
 		     	        	$("#loader").hide();
 		     	      	}
-		     	    });
+		     	    });}
 		    	}
 		    	else if(formState == "DL") {
 		    		$("#loader").show();
@@ -257,7 +274,7 @@
 		    		}
 		    		
 		     	    $.ajax({
-		     	        url      : 'http://localhost:8092/RedCrossSupportService/VaccineDetails?action=DL',
+		     	        url      : 'http://localhost:8095/RedCrossSupportService/VaccineDetails?action=DL',
 		     	        method   : 'POST', 
 		     	        data     : objVaccine,
 		     	        success  : function(response){
@@ -270,32 +287,32 @@
 		    });
 		    
 		    $('#dataTable tbody').on( 'click', '.btnupdate', function () {
-		        var data = table.row( $(this).parents('tr') ).data();
+		        formdata = table.row( $(this).parents('tr') ).data();
 		       
-		        $('#vaccineNo').val(data[0]),
-		        $('#batch_number').val(data[1]);
-				$('#vaccine_name').val(data[2]);
-				$('#receive_date').val(data[3]);
-				$('#country').val(data[4]);
-				$('#expire_date').val(data[5]);
-				$('#quantity').val(data[6]);
+		        $('#vaccineNo').val(formdata[0]);
+		        $('#vaccineName').val(formdata[1]);
+				$('#batchNumber').val(formdata[2]);
+				$('#receiveDate').val(formdata[3]);
+				$('#country').val(formdata[4]);
+				$('#expireDate').val(formdata[5]);
+				$('#quantity').val(formdata[6]);
 				
 				$("#vaccineForm :input").prop("disabled", false);
 				
 		    	formState = "UP";
-		    	$('#btnAddAndUpdateModal').html('Update Details');
+		    	$('#btnAddAndUpdateModal').html('Update Inventory');
 		    	$('#addAndUpdateModal').modal('toggle');
 		    });
 		    
 		    $('#dataTable tbody').on( 'click', '.btndelete', function () {
 		        var data = table.row( $(this).parents('tr') ).data();
 		        
-		        $('#vaccineNo').val(data[0]),
-		        $('#batch_number').val(data[1]);
-				$('#vaccine_name').val(data[2]);
-				$('#receive_date').val(data[3]);
+		        $('#vaccineNo').val(data[0]);
+		        $('#vaccineName').val(data[1]);
+				$('#batchNumber').val(data[2]);
+				$('#receiveDate').val(data[3]);
 				$('#country').val(data[4]);
-				$('#expire_date').val(data[5]);
+				$('#expireDate').val(data[5]);
 				$('#quantity').val(data[6]);
 				
 				$("#vaccineForm :input").prop("disabled", true);

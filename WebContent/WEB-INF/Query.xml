@@ -4,23 +4,24 @@
 		
 	<query id="insert_vaccinedetails">
         <![CDATA[
-			insert into vaccine_details(batch_number, vaccine_name, receive_date, country, expire_date, quantity)
+			insert into vaccine_details(vaccineName, batchNumber, receiveDate, country, expireDate, quantity)
 			values (?, ?, ?, ?, ?, ?)			
         ]]>
 	</query>
 
 	<query id="all_vaccinedetails">
          <![CDATA[        
-			select vaccineNo, batch_number, vaccine_name, receive_date, country, expire_date, quantity
+			select *
 			from vaccine_details
         ]]>
 	</query>
 	
 	<query id="vaccinedetails_by_id">
          <![CDATA[
-         	select vaccineNo, batch_number, vaccine_name, receive_date, country, expire_date, quantity
+         	select vaccineNo, vaccineName, batchNumber, receiveDate, country, expireDate, quantity
 			from vaccine_details   
 			where vaccineNo = ?
+			
         ]]>
 	</query>
 
@@ -33,8 +34,8 @@
 	<query id="update_vaccinedetails">
          <![CDATA[        
 			update vaccine_details as g 
-			set g.batch_number = ?, g.vaccine_name = ?, g.receive_date = ?, g.country = ?,
-				g.expire_date = ?, g.quantity = ? 
+			set g.vaccineName = ?, g.batchNumber = ?, g.receiveDate = ?, g.country = ?,
+				g.expireDate = ?, g.quantity = ? 
 			where g.vaccineNo = ?
         ]]>
 	</query>
