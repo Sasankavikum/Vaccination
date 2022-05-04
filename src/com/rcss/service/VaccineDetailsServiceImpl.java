@@ -187,11 +187,7 @@ public class VaccineDetailsServiceImpl implements IVaccineDetailsService {
 			while (resultSet.next()) {
 				VaccineReport vaccine = new VaccineReport(); 
 				vaccine.setVaccineName(resultSet.getString(CommonConstants.COLUMN_INDEX_ONE));
-				vaccine.setBatchNo(resultSet.getString(CommonConstants.COLUMN_INDEX_TWO));
-				vaccine.setVaccineReceive(resultSet.getString(CommonConstants.COLUMN_INDEX_THREE));
-				vaccine.setVaccineCountry(resultSet.getString(CommonConstants.COLUMN_INDEX_FOUR));
-				vaccine.setVaccineExpire(resultSet.getString(CommonConstants.COLUMN_INDEX_FIVE));
-				vaccine.setQuantity(resultSet.getInt(CommonConstants.COLUMN_INDEX_SIX));
+				vaccine.setCount(resultSet.getInt(CommonConstants.COLUMN_INDEX_TWO));
 				vaccineList.add(vaccine);
 			}
 			
