@@ -1,7 +1,6 @@
 package com.rcss.model;
 
-public class VaccineDetails {
-	private int vaccineNo;
+public class VaccineReport {
 	private String vaccineName;
 	private String batchNo;
 	private String vaccineReceive;
@@ -9,13 +8,12 @@ public class VaccineDetails {
 	private String vaccineExpire;
 	private int quantity;
 	
-	public VaccineDetails() {
+	public VaccineReport() {
 		super();
 	}
-	public VaccineDetails(int vaccineNo, String vaccineName, String batchNo, String vaccineReceive, String vaccineCountry,
+	public VaccineReport(String vaccineName, String batchNo, String vaccineReceive, String vaccineCountry,
 			String vaccineExpire, int quantity) {
 		super();
-		this.vaccineNo = vaccineNo;
 		this.vaccineName = vaccineName;
 		this.batchNo = batchNo;
 		this.vaccineReceive = vaccineReceive;
@@ -23,9 +21,7 @@ public class VaccineDetails {
 		this.vaccineExpire = vaccineExpire;
 		this.quantity = quantity;
 	}
-	public int getVaccineNo() {
-		return vaccineNo;
-	}
+	
 	public String getVaccineName() {
 		return vaccineName;
 	}
@@ -43,9 +39,6 @@ public class VaccineDetails {
 	}
 	public int getQuantity() {
 		return quantity;
-	}
-	public void setVaccineNo(int vaccineNo) {
-		this.vaccineNo = vaccineNo;
 	}
 	public void setVaccineName(String vaccineName) {
 		this.vaccineName = vaccineName;
@@ -65,6 +58,4 @@ public class VaccineDetails {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
-	
 }

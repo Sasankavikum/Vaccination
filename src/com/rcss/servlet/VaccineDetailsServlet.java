@@ -2,8 +2,6 @@ package com.rcss.servlet;
 
 import java.io.IOException;
 
-
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +22,7 @@ public class VaccineDetailsServlet extends HttpServlet {
         super();
     }
 
-
+//    @WebEndpoint
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.sendRedirect("/RedCrossSupportService/VaccineDetails/index.jsp");
 	}
@@ -36,12 +34,12 @@ public class VaccineDetailsServlet extends HttpServlet {
     		IVaccineDetailsService vaccineService = new VaccineDetailsServiceImpl();
     		vaccineService.addVaccineDetail(new VaccineDetails(
     				0, 
-    				request.getParameter("batch_number"), 
-    				request.getParameter("vaccine_name"), 
-    				request.getParameter("receive_date"), 
+    				request.getParameter("vaccineName"), 
+    				request.getParameter("batchNumber"), 
+    				request.getParameter("receiveDate"), 
     				request.getParameter("country"), 
-    				request.getParameter("expire_date"), 
-    				Integer.parseInt(request.getParameter("quantity"))
+    				request.getParameter("expireDate"),  
+    				Integer.parseInt(request.getParameter("quantity")) 
     				));    		  
     	
     		response.sendRedirect("/RedCrossSupportService/VaccineDetails/index.jsp");
@@ -50,11 +48,11 @@ public class VaccineDetailsServlet extends HttpServlet {
     		IVaccineDetailsService vaccineService = new VaccineDetailsServiceImpl();
     		vaccineService.updateVaccine(Integer.parseInt(request.getParameter("vaccineNo")), new VaccineDetails(
     				Integer.parseInt(request.getParameter("vaccineNo")), 
-    				request.getParameter("batch_number"), 
-    				request.getParameter("vaccine_name"), 
-    				request.getParameter("receive_date"), 
+    				request.getParameter("vaccineName"), 
+    				request.getParameter("batchNumber"), 
+    				request.getParameter("receiveDate"), 
     				request.getParameter("country"), 
-    				request.getParameter("expire_date"), 
+    				request.getParameter("expireDate"),  
     				Integer.parseInt(request.getParameter("quantity"))		
     				));
     		  		

@@ -35,11 +35,11 @@ public class VaccineDetailsServiceImpl implements IVaccineDetailsService {
 			preparedStatement = connection.prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_INSERT_VACCINE));
 			connection.setAutoCommit(false);
 			
-			preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, vaccineDetail.getBatch_number());
-			preparedStatement.setString(CommonConstants.COLUMN_INDEX_TWO, vaccineDetail.getVaccine_name());
-			preparedStatement.setString(CommonConstants.COLUMN_INDEX_THREE, vaccineDetail.getReceive_date());
-			preparedStatement.setString(CommonConstants.COLUMN_INDEX_FOUR, vaccineDetail.getCountry());
-			preparedStatement.setString(CommonConstants.COLUMN_INDEX_FIVE, vaccineDetail.getExpire_date());
+			preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, vaccineDetail.getVaccineName());
+			preparedStatement.setString(CommonConstants.COLUMN_INDEX_TWO, vaccineDetail.getBatchNo());
+			preparedStatement.setString(CommonConstants.COLUMN_INDEX_THREE, vaccineDetail.getVaccineReceive());
+			preparedStatement.setString(CommonConstants.COLUMN_INDEX_FOUR, vaccineDetail.getVaccineCountry());
+			preparedStatement.setString(CommonConstants.COLUMN_INDEX_FIVE, vaccineDetail.getVaccineExpire());
 			preparedStatement.setInt(CommonConstants.COLUMN_INDEX_SIX, vaccineDetail.getQuantity());
 			
 			preparedStatement.execute();
@@ -89,11 +89,11 @@ public class VaccineDetailsServiceImpl implements IVaccineDetailsService {
 			while (resultSet.next()) {
 				VaccineDetails vaccine = new VaccineDetails();
 				vaccine.setVaccineNo(resultSet.getInt(CommonConstants.COLUMN_INDEX_ONE));
-				vaccine.setBatch_number(resultSet.getString(CommonConstants.COLUMN_INDEX_TWO));
-				vaccine.setVaccine_name(resultSet.getString(CommonConstants.COLUMN_INDEX_THREE));
-				vaccine.setReceive_date(resultSet.getString(CommonConstants.COLUMN_INDEX_FOUR));
-				vaccine.setCountry(resultSet.getString(CommonConstants.COLUMN_INDEX_FIVE));
-				vaccine.setExpire_date(resultSet.getString(CommonConstants.COLUMN_INDEX_SIX));
+				vaccine.setVaccineName(resultSet.getString(CommonConstants.COLUMN_INDEX_TWO));
+				vaccine.setBatchNo(resultSet.getString(CommonConstants.COLUMN_INDEX_THREE));
+				vaccine.setVaccineReceive(resultSet.getString(CommonConstants.COLUMN_INDEX_FOUR));
+				vaccine.setVaccineCountry(resultSet.getString(CommonConstants.COLUMN_INDEX_FIVE));
+				vaccine.setVaccineExpire(resultSet.getString(CommonConstants.COLUMN_INDEX_SIX));
 				vaccine.setQuantity(resultSet.getInt(CommonConstants.COLUMN_INDEX_SEVEN));
 				vaccineList.add(vaccine);
 			}
@@ -123,12 +123,13 @@ public class VaccineDetailsServiceImpl implements IVaccineDetailsService {
 			connection = DBConnectionUtil.getDBConnection();
 			preparedStatement = connection.prepareStatement(QueryUtil.queryByID(CommonConstants.QUERY_ID_UPDATE_VACCINE));
 			
-			preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, vaccineDetail.getBatch_number());
-			preparedStatement.setString(CommonConstants.COLUMN_INDEX_TWO, vaccineDetail.getVaccine_name());
-			preparedStatement.setString(CommonConstants.COLUMN_INDEX_THREE, vaccineDetail.getReceive_date());
-			preparedStatement.setString(CommonConstants.COLUMN_INDEX_FOUR, vaccineDetail.getCountry());
-			preparedStatement.setString(CommonConstants.COLUMN_INDEX_FIVE, vaccineDetail.getExpire_date());
-			preparedStatement.setInt(CommonConstants.COLUMN_INDEX_SIX, vaccineDetail.getQuantity());
+			preparedStatement.setString(CommonConstants.COLUMN_INDEX_ONE, vaccineDetail.getVaccineName());
+			preparedStatement.setString(CommonConstants.COLUMN_INDEX_TWO, vaccineDetail.getBatchNo());
+			preparedStatement.setString(CommonConstants.COLUMN_INDEX_THREE, vaccineDetail.getVaccineReceive());
+			preparedStatement.setString(CommonConstants.COLUMN_INDEX_FOUR, vaccineDetail.getVaccineCountry());
+			preparedStatement.setString(CommonConstants.COLUMN_INDEX_FIVE, vaccineDetail.getVaccineExpire());
+			preparedStatement.setInt(CommonConstants.COLUMN_INDEX_SIX, vaccineDetail.getQuantity());			
+			preparedStatement.setInt(CommonConstants.COLUMN_INDEX_SEVEN, vaccineNo);
 			
 			preparedStatement.executeUpdate();
 			
@@ -186,7 +187,11 @@ public class VaccineDetailsServiceImpl implements IVaccineDetailsService {
 			while (resultSet.next()) {
 				VaccineReport vaccine = new VaccineReport(); 
 				vaccine.setVaccineName(resultSet.getString(CommonConstants.COLUMN_INDEX_ONE));
-				vaccine.setCount(resultSet.getInt(CommonConstants.COLUMN_INDEX_TWO));
+				vaccine.setBatchNo(resultSet.getString(CommonConstants.COLUMN_INDEX_TWO));
+				vaccine.setVaccineReceive(resultSet.getString(CommonConstants.COLUMN_INDEX_THREE));
+				vaccine.setVaccineCountry(resultSet.getString(CommonConstants.COLUMN_INDEX_FOUR));
+				vaccine.setVaccineExpire(resultSet.getString(CommonConstants.COLUMN_INDEX_FIVE));
+				vaccine.setQuantity(resultSet.getInt(CommonConstants.COLUMN_INDEX_SIX));
 				vaccineList.add(vaccine);
 			}
 			
