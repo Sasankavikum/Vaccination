@@ -10,7 +10,7 @@ public class CommonConstants {
 	public static final String PASSWORD = "password";
 	public static final String DRIVER_NAME = "driverName";
 	
-	public static final String COMPANY_NAME = "Red Cross Support Service";
+	public static final String COMPANY_NAME = "Vaccination Support Service System";
 	public static final String COMPANY_ADDRESS = "Red Cross, Weera Madduma Bandara Mawatha, Kandy";
 	public static final String CONTACT_NO = "0812 222 100";
 

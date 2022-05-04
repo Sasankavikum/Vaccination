@@ -37,7 +37,7 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 	
 	<%
 		IVaccineDetailsService vaccineService = new VaccineDetailsServiceImpl();
-		ArrayList<VaccineDetails> vaccineList = vaccineService.getVaccineDetails();
+		ArrayList<VaccineReport> vaccineList = vaccineService.getVaccinePrintDetails();
 	%>
 	
 	<div class="A4" style="border:1px solid black; height:40.0cm;">
@@ -58,33 +58,17 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 				<table class="table mt-3">
 				<thead>
 					<tr>
-						<th>Batch Number</th>
 						<th>Vaccine Name</th>
-						<th>Received Date</th>
-						<th>Country From</th>
-						<th>Expire Date</th>
-						<th>Quantity</th>
+						<th>Current Quantity</th>
 					</tr>
 				</thead>
 				<tbody>
 					<%
-						for(VaccineDetails vaccine : vaccineList){
+						for(VaccineReport vaccine : vaccineList){
 					%>
 					<tr>
-<<<<<<< Updated upstream
-						<td class="text-uppercase"><%= vaccine.getBatch_number() %></td>
 						<td class="text-uppercase"><%= vaccine.getVaccine_name() %></td>
-						<td class="text-uppercase"><%= vaccine.getReceive_date() %></td>
-						<td class="text-uppercase"><%= vaccine.getCountry() %></td>
-						<td class="text-uppercase"><%= vaccine.getExpire_date() %></td>
-=======
-						<td class="text-uppercase"><%= vaccine.getBatchNo() %></td>
-						<td class="text-uppercase"><%= vaccine.getVaccineName() %></td>
-						<td class="text-uppercase"><%= vaccine.getVaccineReceive() %></td>
-						<td class="text-uppercase"><%= vaccine.getVaccineCountry() %></td>
-						<td class="text-uppercase"><%= vaccine.getVaccineExpire() %></td>
->>>>>>> Stashed changes
-						<td class="text-uppercase"><%= vaccine.getQuantity() %></td>			
+						<td class="text-uppercase p-1 text-dark h5"><%= vaccine.getCount() %></td>			
 					</tr>	
 					<% } %>														
 				</tbody>
@@ -97,9 +81,8 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 		<div class="row mt-5">
 			<div class="col-md-12">
 				
-<<<<<<< Updated upstream
+
 				<p class="font-weight-bold m-0 p-0 mt-1 ml-5">Generetaed by: ................................................ </p><br>
-=======
 				<p class="font-weight-bold m-0 p-0 mt-1 ml-5" id="paragraph1">  </p><br>
 				
 				<p class="font-weight-bold m-0 p-0 mt-1 ml-5" id="paragraph2"> </p>
@@ -112,8 +95,6 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 				var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 					document.getElementById("paragraph2").innerHTML="Prepaired Date :   "+date
 					
->>>>>>> Stashed changes
-				
 				</script>
 				
 			</div>

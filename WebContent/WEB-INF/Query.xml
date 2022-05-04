@@ -42,7 +42,7 @@
 	
 	<query id="print_vaccinedetails">
          <![CDATA[        
-		 	select vaccineName, COUNT(*) as count
+		 	select vaccineName, SUM(quantity) as count
 		  	from vaccine_details
 		  	group by vaccineName
         ]]>
