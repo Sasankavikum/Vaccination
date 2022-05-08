@@ -24,9 +24,9 @@ This section should list any major frameworks that you built your project using.
 * [Boostrap](https://getbootstrap.com/)
 
 ### Libraries Used
-* [Java servlet] (https://docs.oracle.com/javaee/7/api/javax/servlet/http/package-use.html)
-* [JSTL] (https://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/c/tld-summary.html)
-* [mysql-connector] (https://www.mysql.com/products/connector/)
+* [Java servlet](https://docs.oracle.com/javaee/7/api/javax/servlet/http/package-use.html)
+* [JSTL](https://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/c/tld-summary.html)
+* [mysql-connector](https://www.mysql.com/products/connector/)
 
 
 <!-- CONTACT -->
@@ -34,16 +34,16 @@ This section should list any major frameworks that you built your project using.
 
 👤 Dulitha Kaluarachchi
 - GitHub: [@githubhandle](https://github.com/dulitha98)
-- Vaccine Details: [@branchhandle] (https://github.com/Sasankavikum/Vaccination/tree/IT20248208)
+- Vaccine Details: [@branchhandle](https://github.com/Sasankavikum/Vaccination/tree/IT20248208)
 
 👤 Thenuka Wijewardena
 - GitHub: [@githubhandle](https://github.com/thenu98)
-- Employee Details: [@branchhandle] (https://github.com/Sasankavikum/Vaccination/tree/IT20049454)
+- Employee Details: [@branchhandle](https://github.com/Sasankavikum/Vaccination/tree/IT20049454)
 
 👤 Sasanka Vitharana
 - GitHub: [@githubhandle](https://github.com/Sasankavikum)
-- Inventory Details: [@branchhandle] (https://github.com/Sasankavikum/Vaccination/tree/IT20072506)
+- Inventory Details: [@branchhandle](https://github.com/Sasankavikum/Vaccination/tree/IT20072506)
 
 👤 Samuditha Wijayasundara
 - GitHub: [@githubhandle](https://github.com/SamudithaD97)
-- Daily Progress Details: [@branchhandle] (https://github.com/Sasankavikum/Vaccination/tree/IT19182810)
+- Daily Progress Details: [@branchhandle](https://github.com/Sasankavikum/Vaccination/tree/IT19182810)
