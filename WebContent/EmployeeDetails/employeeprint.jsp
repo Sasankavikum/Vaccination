@@ -56,7 +56,7 @@ page[size="A4"] {
 			<div class="col-md-1"></div>
 			<div class="col-md-10 justify-content-center">
 				<table class="table mt-3">
-				
+				<!--All details-->
 				<tbody>
 					<%
 						for(EmployeeDetails emp : employeeList){
